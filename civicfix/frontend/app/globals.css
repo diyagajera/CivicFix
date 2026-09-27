@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+  }
+  body {
+    @apply bg-concrete text-asphalt;
+  }
+  :focus-visible {
+    outline: 2px solid theme("colors.signal");
+    outline-offset: 2px;
+  }
+}
+
+/* Stencil-cut corners for the upload zone - evokes a cut cardboard/stencil
+   edge rather than a rounded SaaS card. Used sparingly, one spot only. */
+.cut-corners {
+  clip-path: polygon(
+    16px 0,
+    100% 0,
+    100% calc(100% - 16px),
+    calc(100% - 16px) 100%,
+    0 100%,
+    0 16px
+  );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
